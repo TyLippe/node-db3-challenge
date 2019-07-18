@@ -29,6 +29,14 @@ function findById(id) {
 }
 
 //WORKING
+function findSteps(id) {
+    return db('schemes')
+        .innerJoin('steps', 'schemes.id', 'steps.scheme_id')
+        .where({ scheme_id: id })
+        .select('schemes.scheme_name', 'steps.step_number', 'steps.instructions')
+}
+
+//WORKING
 function add(scheme) {
     return db('schemes')
         .insert(scheme)
